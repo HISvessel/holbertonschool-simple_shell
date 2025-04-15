@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	char *prompt = "Insert& ";
+	char *prompt = "(&) ";
 	char *lineptr;
 	size_t n = 0;
 
