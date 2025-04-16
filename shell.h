@@ -9,13 +9,13 @@
 #include <sys/wait.h>
 #include <errno.h>
 
-#define MAX_INPUT_SIZE 1024
-#define MAX_ARG_SIZE 100
+#define COMMAND_SIZE 1024
+#define MAX_ARGS 100
 
-void execute_command(char *input);
+int execute_command(char **args);
 void parse_input(char *input, char **args);
-void handle_cd(char **args);
-void handle_exit(void);
+int handle_cd(char **args);
+int handle_exit(char **args);
 void handle_pipes(char *input);
 
 #endif
