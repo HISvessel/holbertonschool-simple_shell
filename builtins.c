@@ -9,9 +9,19 @@
 
 int handle_exit(char **args)
 {
-	free(args);
-	exit(0);
+	int status = 0;
+
+	while (args[1])
+		status = atoi(args[1]);
+	exit(status);
 }
+
+/**
+ * handle_cd - Hanldes change directory
+ * @args: Argument string
+ *
+ * Return: 0 on Success
+ */
 
 int handle_cd(char **args)
 {
