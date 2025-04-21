@@ -45,18 +45,25 @@ int fork_and_execute(char **args)
 
 	if (pid == 0)
 	{
-		char *path = getenv("PATH");
-		char *full_path = find_executable(args[0], path);
+		if (args[0][0] == '/' || (args[0][0] == '.' && args[0][1] == '/'))
+			execve(args[0], args, NULL);
+		else
+			execvp(args[0], args);
 
-		if (!full_path)
-		{
-			fprintf(stderr, "%s: command not found\n", args[0]);
-			exit(EXIT_FAILURE);
-		}
-		execute_program(full_path, args);
-		free(full_path);
+		perror("Command not found");
+		exit(EXIT_FAILURE);
+	}
+
+	else if (pid < 0)
+	{
+		perror("Process creation failed");
+		return (-1);
 	}
 	else
-		wait(NULL);
-	return (0);
+	{
+		int status;
+
+		waitpid(pid, &status, 0);
+		return (WIFEXITED(status) ? WEXITSTATUS(status) : -1);
+	}
 }
