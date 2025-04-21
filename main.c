@@ -3,19 +3,15 @@
 #include "shell.h"
 
 /**
- * shell - a miniature terminal
- * @argc: void
- * @argv: void
- * return: 0 on success
+ * main - a miniature terminal
+ * Return: 0 on success
  */
-int main(int ac, char **argv)
+int main(void)
 {
 	char *prompt = "($) ";
 	size_t n = 0;
 	ssize_t nchars_read;
 	char *args[MAX_ARGS], *lineptr;
-
-	(void)ac, (void) argv;
 
 	while (1)
 	{

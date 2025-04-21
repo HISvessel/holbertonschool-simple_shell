@@ -6,14 +6,15 @@
 /**
  * parse_inputs - this parses the inputs
  * @args: strings to take
- * @input: the input of string
+ * @lineptr: the input of string
+ * @delim: line delimiter
  */
 
-void parse_inputs(char *lineptr, char **args, const char *delim) /* added a new parameter delim*/
+void parse_inputs(char *lineptr, char **args, const char *delim)
 {
 	char *token;
 	int i = 0;
-	
+
 	lineptr[strcspn(lineptr, "\n")] = 0; /*new updates from main*/
 	token = strtok(lineptr, delim);
 	while (token != NULL && i < MAX_ARGS - 1) /*added max counter for index i*/
