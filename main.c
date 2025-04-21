@@ -8,14 +8,13 @@
  */
 int main(void)
 {
-	char *prompt = "($) ";
 	size_t n = 0;
 	ssize_t nchars_read;
 	char *args[MAX_ARGS], *lineptr;
 
 	while (1)
 	{
-		printf("%s", prompt);
+		printf("($ )");
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
