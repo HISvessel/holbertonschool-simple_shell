@@ -1,5 +1,6 @@
 #include "shell.h"
 
+extern char **environ;
 /**
  * create_process - Function to create new process using fork
  *
@@ -22,7 +23,6 @@ pid_t create_process(void)
  * @path: path to search
  * @args: Arguments in function
  */
-extern char **environ;
 
 void execute_program(const char *path, char **args)
 {
