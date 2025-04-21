@@ -9,8 +9,12 @@
 
 int handle_exit(char **args)
 {
-	free(args);
-	exit(0);
+	int status = 0; /* sends a status to args */
+	if (args[1]) /* if the argument placed is not null*/
+	{
+		status = atoi(args[1]); /* converts argument to value*/
+	}
+	exit(status);
 }
 
 int handle_cd(char **args)
