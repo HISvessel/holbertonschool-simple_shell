@@ -3,45 +3,28 @@
 #include "shell.h"
 
 /**
- * shell - a miniature terminal
- * @argc: void
- * @argv: void
- * return: 0 on success
+ * main - a miniature terminal
+ * Return: 0 on success
  */
-int main(int ac, char **argv)
+int main(void)
 {
-	char *prompt = "($) ";
 	size_t n = 0;
 	ssize_t nchars_read;
-	char *args[MAX_ARGS], *token, *lineptr;
-	int i;
-
-	(void)ac, (void) argv;
+	char *args[MAX_ARGS], *lineptr;
 
 	while (1)
 	{
-		printf("%s", prompt);
+		printf("($)");
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
 		{
-			perror("getline failed\n");
+		/*	perror("getline failed\n");*/
 			free(lineptr);
 			exit(EXIT_FAILURE);
 		}
 
-		lineptr[strcspn(lineptr, "\n")] = 0;
-
-		token = strtok(lineptr, " ");
-		i = 0;
-
-		while (token != NULL && i < MAX_ARGS - 1)
-		{
-			args[i] = token;
-			token = strtok(NULL, " ");
-			i++;
-		}
-		args[i] = NULL;
+		parse_inputs(lineptr, args, " ");
 
 		if (strcmp(args[0], "exit") == 0)
 			handle_exit(args);

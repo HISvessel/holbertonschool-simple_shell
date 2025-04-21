@@ -1,0 +1,10 @@
+./" man page for hsh
+./" contact Ramos, Josniel and/or Sanchez, Kevin for any errors or typos
+.TH "april 21st, 2025"
+.SH Name
+hsh \- a user made simple shell
+.SH Description
+This opens a miniature terminal within a bash, in which the terminal user can perform
+a limited number of commands. More on functionality later
+.TP 
+.B
