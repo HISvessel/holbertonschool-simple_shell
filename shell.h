@@ -13,9 +13,9 @@
 #define MAX_ARGS 100
 
 int execute_command(char **args);
-void parse_input(char *input, char **args);
+void parse_inputs(char *input, char **args, const char *delim);
 int handle_cd(char **args);
-int handle_exit(char **args);
+int handle_exit(char **args); /* changed to void as test */
 void handle_pipes(char *input);
 
 #endif
