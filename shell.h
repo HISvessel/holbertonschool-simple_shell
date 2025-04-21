@@ -12,7 +12,6 @@
 #define COMMAND_SIZE 1024
 #define MAX_ARGS 100
 
-extern char **environ;
 
 int execute_command(char **args);
 void parse_inputs(char *input, char **args, const char *delim);

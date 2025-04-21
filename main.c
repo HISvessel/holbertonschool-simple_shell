@@ -13,8 +13,8 @@ int main(void)
 	char *args[MAX_ARGS], *lineptr;
 
 	while (1)
-	{
-		printf("($)");
+{
+		printf("($) ");
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
