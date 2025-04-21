@@ -14,12 +14,12 @@ int main(void)
 
 	while (1)
 	{
-		printf("($ )");
+		printf("($)");
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
 		{
-			perror("getline failed\n");
+		/*	perror("getline failed\n");*/
 			free(lineptr);
 			exit(EXIT_FAILURE);
 		}
