@@ -28,22 +28,16 @@ int main(void)
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
 
-		if (args[0] == NULL || *args[0] == '\0')
+		if (args[0] == NULL || args[0][0] == '\0')
 			continue;
 
 		if (strcmp(args[0], "exit") == 0)
 			handle_exit(args, exit_status);
 		else if (strcmp(args[0], "cd") == 0)
 			handle_cd(args);
-		else if (args[0][0] != '\0')
+		else
 		{
 			exit_status = execute_command(args);
-		}
-
-		if (!isatty(STDIN_FILENO))
-		{
-			free(lineptr);
-			exit(exit_status);
 		}
 	}
 	free(lineptr);

@@ -15,11 +15,20 @@ void parse_inputs(char *lineptr, char **args, const char *delim)
 	char *token;
 	int i = 0;
 
-	token = strtok(lineptr, delim);
-	while (token != NULL && i < MAX_ARGS - 1) /*added max counter for index i*/
+	while (*lineptr == ' ') lineptr++; /*added max counter for index i*/
+	
+	if (*lineptr == '\0' || *lineptr == '\n')
 	{
-		args[i++] = token; /*pointer updated to the new token*/
+		args [0] = NULL;
+		return;
+	}
+
+	token = strtok(lineptr, delim);
+
+	while (token != NULL && i < MAX_ARGS -1)
+	{
+		args[i++] = token;
 		token = strtok(NULL, delim);
 	}
-	args[i] = NULL; /* NULL is found */
+	args[i] = NULL;
 }
