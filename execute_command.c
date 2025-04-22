@@ -9,10 +9,12 @@
 
 int execute_command(char **args)
 {
-	if (fork_and_execute(args) == -1)
+	int status = fork_and_execute(args);
+
+	if (status == -1)
 	{
 		fprintf(stderr, "Failed to execute command\n");
 		return (-1);
 	}
-	return (0);
+	return (status);
 }

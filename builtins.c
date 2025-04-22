@@ -3,15 +3,16 @@
 /**
  * handle_exit - Built in function to exit the shell
  * @args: Argument string for the function
+ * @exit_status: Current exit status of the shell
  *
- * Return: Shell exit
+ * Return: Shell exit with specified status
  */
 
-int handle_exit(char **args)
+int handle_exit(char **args, int exit_status)
 {
-	int status = 0;
+	int status = exit_status;
 
-	while (args[1])
+	if (args[1] != NULL)
 		status = atoi(args[1]);
 	exit(status);
 }
