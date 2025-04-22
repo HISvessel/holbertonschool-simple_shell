@@ -21,15 +21,8 @@ int main(void)
 
 		if (nchars_read == -1)
 		{
-		/*	if(feof(stdin))
-			{
-				free(lineptr);
-				write(STDOUT_FILENO, "\n", 1);
-				exit(EXIT_SUCCESS);
-			}
-			perror("getline failed\n"); */
 			free(lineptr);
-			exit(EXIT_SUCCESS);
+			exit(EXIT_SUCCESS); /* checking for success, not fail */
 		}
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
