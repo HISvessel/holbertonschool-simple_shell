@@ -25,8 +25,9 @@ pid_t create_process(void)
 
 extern char **environ;
 
-void execute_program(const char *path, char **args)
+void execute_program(char *args[], char *path)
 {
+
 	if (path == NULL || args == NULL)
 	{
 		fprintf(stderr, "Invalid arguments: path or args is NULL\n");
@@ -55,10 +56,10 @@ int fork_and_execute(char **args)
 	{
 		if (args[0][0] == '/' || (args[0][0] == '.' && args[0][1] == '/'))
 			execve(args[0], args, NULL);
+		/*else
+			execvp(args[0], args);*/
 		else
-			execvp(args[0], args);
-
-		perror("Command not found");
+			perror("Command not found");
 		exit(EXIT_FAILURE);
 	}
 

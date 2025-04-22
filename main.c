@@ -14,8 +14,8 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-		printf("($) ");
-		fflush(stdout);
+			printf("($) ");
+			fflush(stdout);
 		}
 		nchars_read = getline(&lineptr, &n, stdin);
 
@@ -26,6 +26,9 @@ int main(void)
 		}
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
+
+		if (args[0] == NULL || *args [0] == '\0')
+			continue;
 
 		if (strcmp(args[0], "exit") == 0)
 			handle_exit(args);
