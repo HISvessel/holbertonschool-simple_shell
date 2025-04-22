@@ -12,22 +12,24 @@ int main(void)
 
 	while (1)
 	{
+		if (isatty(STDIN_FILENO))
+		{
 		printf("($) ");
 		fflush(stdout);
-
+		}
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
 		{
-			if(feof(stdin))
+		/*	if(feof(stdin))
 			{
 				free(lineptr);
 				write(STDOUT_FILENO, "\n", 1);
 				exit(EXIT_SUCCESS);
 			}
-			perror("getline failed\n");
+			perror("getline failed\n"); */
 			free(lineptr);
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
