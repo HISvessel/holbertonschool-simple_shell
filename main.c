@@ -19,7 +19,13 @@ int main(void)
 
 		if (nchars_read == -1)
 		{
-			/*	perror("getline failed\n");*/
+			if(feof(stdin))
+			{
+				free(lineptr);
+				write(STDOUT_FILENO, "\n", 1);
+				exit(EXIT_SUCCESS);
+			}
+			perror("getline failed\n");
 			free(lineptr);
 			exit(EXIT_FAILURE);
 		}
