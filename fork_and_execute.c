@@ -19,27 +19,25 @@ int fork_and_execute(char **args)
 		char *path = NULL;
 		char *executable_path;
 
-		for (i = 0; environ[i] != NULL; i++)
-		{
-			if (strncmp(environ[i], "PATH=", 5) == 0)
-			{
-				path = environ[i] + 5;
-				break;
-			}
-		}
-
-		if (path == NULL)
-			path = "/bin:/usr/bin";
-
-		if (args[0][0] == '/' || (args[0][0] == '.' && args[0][1] == '/'))
+		if (strchr(args[0], '/') != NULL)
 		{
 			execve(args[0], args, environ);
 			perror("execve failed");
 			exit(EXIT_FAILURE);
 		}
-
 		else
 		{
+			for (i = 0; environ[i] != NULL; i++)
+			{
+				if (strncmp(environ[i], "PATH=", 5) == 0)
+				{
+					path = environ[i] + 5;
+					break;
+				}
+			}
+
+			if (path == NULL)
+				path = "/bin:/usr/bin";
 			executable_path = find_executable(args[0], path);
 
 			if (executable_path == NULL)
