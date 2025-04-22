@@ -72,6 +72,6 @@ int fork_and_execute(char **args)
 		int status;
 
 		waitpid(pid, &status, 0);
-		return (WIFEXITED(status) ? WEXITSTATUS(status) : -1);
+		return (WEXITSTATUS(status));
 	}
 }
