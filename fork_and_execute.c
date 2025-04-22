@@ -15,7 +15,7 @@ int fork_and_execute(char **args)
 
 	if (pid == 0)
 	{
-		int i;
+		int i, path_found = 0;
 		char *path = NULL;
 		char *executable_path;
 
@@ -32,18 +32,19 @@ int fork_and_execute(char **args)
 				if (strncmp(environ[i], "PATH=", 5) == 0)
 				{
 					path = environ[i] + 5;
+					path_found = 1;
 					break;
 				}
 			}
 
-			if (path == NULL)
+			if (!path_found)
 				path = "/bin:/usr/bin";
 			executable_path = find_executable(args[0], path);
 
 			if (executable_path == NULL)
 			{
-				fprintf(stderr, "Command not found: %s\n", args[0]);
-				exit(EXIT_FAILURE);
+				fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+				exit(127);
 			}
 
 			execve(executable_path, args, environ);
