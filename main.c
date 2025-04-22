@@ -22,7 +22,7 @@ int main(void)
 		if (nchars_read == -1)
 		{
 			free(lineptr);
-			exit(EXIT_SUCCESS); /* checking for success, not fail */
+			exit(EXIT_FAILURE); /* checking for success, not fail */
 		}
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
