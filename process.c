@@ -1,6 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
 /**
  * create_process - Function to create new process using fork
  *
@@ -24,6 +23,8 @@ pid_t create_process(void)
  * @args: Arguments in function
  */
 
+extern char **environ;
+
 void execute_program(const char *path, char **args)
 {
 	if (path == NULL || args == NULL)
@@ -45,6 +46,7 @@ void execute_program(const char *path, char **args)
  * Return: 0 on sucess
  *
  */
+
 int fork_and_execute(char **args)
 {
 	pid_t pid = create_process();

@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "shell.h"
 
 /**
@@ -10,27 +8,29 @@ int main(void)
 {
 	size_t n = 0;
 	ssize_t nchars_read;
-	char *args[MAX_ARGS], *lineptr;
+	char *args[MAX_ARGS], *lineptr = NULL;
 
 	while (1)
-{
+	{
 		printf("($) ");
+		fflush(stdout);
+
 		nchars_read = getline(&lineptr, &n, stdin);
 
 		if (nchars_read == -1)
 		{
-		/*	perror("getline failed\n");*/
+			/*	perror("getline failed\n");*/
 			free(lineptr);
 			exit(EXIT_FAILURE);
 		}
-
+		lineptr[strcspn(lineptr, "\n")] = 0;
 		parse_inputs(lineptr, args, " ");
 
 		if (strcmp(args[0], "exit") == 0)
 			handle_exit(args);
 		else if (strcmp(args[0], "cd") == 0)
 			handle_cd(args);
-		else
+		else if (args[0][0] != '\0')
 		{
 			execute_command(args);
 		}
