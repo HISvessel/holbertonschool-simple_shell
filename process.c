@@ -1,5 +1,6 @@
 #include "shell.h"
 
+extern char **environ;
 /**
  * create_process - Function to create new process using fork
  *
@@ -23,8 +24,6 @@ pid_t create_process(void)
  * @args: Arguments in function
  */
 
-extern char **environ;
-
 void execute_program(char *args[], char *path)
 {
 
@@ -40,39 +39,3 @@ void execute_program(char *args[], char *path)
 	}
 }
 
-/**
- * fork_and_execute - Creates new process and executes command
- * @args: Arguments to execute
- *
- * Return: 0 on sucess
- *
- */
-
-int fork_and_execute(char **args)
-{
-	pid_t pid = create_process();
-
-	if (pid == 0)
-	{
-		if (args[0][0] == '/' || (args[0][0] == '.' && args[0][1] == '/'))
-			execve(args[0], args, NULL);
-		/*else
-			execvp(args[0], args);*/
-		else
-			perror("Command not found");
-		exit(EXIT_FAILURE);
-	}
-
-	else if (pid < 0)
-	{
-		perror("Process creation failed");
-		return (-1);
-	}
-	else
-	{
-		int status;
-
-		waitpid(pid, &status, 0);
-		return (WEXITSTATUS(status));
-	}
-}
