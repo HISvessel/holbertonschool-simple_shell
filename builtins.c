@@ -8,12 +8,13 @@
  * Return: Shell exit with specified status
  */
 
-int handle_exit(char **args, int exit_status)
+int handle_exit(char **args, int exit_status, char *lineptr)
 {
 	int status = exit_status;
 
 	if (args[1] != NULL)
 		status = atoi(args[1]);
+	free(lineptr);
 	exit(status);
 }
 

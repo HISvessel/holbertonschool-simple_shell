@@ -16,7 +16,7 @@
 int execute_command(char **args);
 void parse_inputs(char *input, char **args, const char *delim);
 int handle_cd(char **args);
-int handle_exit(char **args, int exit_status); /* changed to void as test */
+int handle_exit(char **args, int exit_status, char *lineptr); /* changed to void as test */
 void handle_pipes(char *input);
 char *find_executable(const char *command, const char *path);
 int fork_and_execute(char **args);

@@ -32,7 +32,7 @@ int main(void)
 			continue;
 
 		if (strcmp(args[0], "exit") == 0)
-			handle_exit(args, exit_status);
+			handle_exit(args, exit_status, lineptr);
 		else if (strcmp(args[0], "cd") == 0)
 			handle_cd(args);
 		else
