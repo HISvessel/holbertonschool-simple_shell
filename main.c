@@ -39,7 +39,7 @@ int main(void)
 		{
 			exit_status = execute_command(args);
 		}
-		free(lineptr);
-		lineptr = NULL;
 	}
+	free(lineptr);
+	return (0);
 }
