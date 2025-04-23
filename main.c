@@ -39,7 +39,10 @@ int main(void)
 		{
 			exit_status = execute_command(args);
 		}
+		free(lineptr);
+		lineptr = NULL;
+		n = 0; /*RESET BUFFER SIZE*/
 	}
-	free(lineptr);
-	return (0);
+	/*free(lineptr);
+	return (0);*/
 }
