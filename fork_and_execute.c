@@ -53,7 +53,7 @@ int fork_and_execute(char **args)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (pid < 0)
+	else if (pid == -1)
 	{
 		perror("Process creation failed");
 		return (-1);

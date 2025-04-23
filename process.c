@@ -11,7 +11,7 @@ pid_t create_process(void)
 {
 	pid_t pid = fork();
 
-	if (pid < 0)
+	if (pid == -1)
 	{
 		perror("fork failed");
 		exit(EXIT_FAILURE);
