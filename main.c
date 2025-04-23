@@ -29,7 +29,12 @@ int main(void)
 		parse_inputs(lineptr, args, " ");
 
 		if (args[0] == NULL || args[0][0] == '\0')
+		{
+			free(lineptr);
+			lineptr = NULL;
+			n = 0;
 			continue;
+		}
 
 		if (strcmp(args[0], "exit") == 0)
 			handle_exit(args, exit_status, lineptr);
