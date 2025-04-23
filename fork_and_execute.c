@@ -42,6 +42,7 @@ int fork_and_execute(char **args)
 			if (executable_path == NULL)
 			{
 				fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+				free(executable_path);
 				exit(127);
 			}
 
