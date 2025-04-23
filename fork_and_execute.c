@@ -39,7 +39,7 @@ int fork_and_execute(char **args)
 			{
 				fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
 				exit(127);
-			/*path = "/bin:/usr/bin";*/
+				path = "/bin:/usr/bin";
 			}
 			executable_path = find_executable(args[0], path);
 
