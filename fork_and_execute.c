@@ -30,7 +30,7 @@ int fork_and_execute(char **args)
 				if (strncmp(environ[i], "PATH=", 5) == 0)
 				{
 					path = environ[i] + 5;
-					/*path_found = 1;*/
+					path_found = 1;
 					break;
 				}
 			}
