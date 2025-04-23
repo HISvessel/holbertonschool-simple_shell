@@ -1,7 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
-
 /**
  * fork_and_execute - Creates new process and executes command
  * @args: Arguments to execute
