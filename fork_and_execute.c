@@ -30,19 +30,23 @@ int fork_and_execute(char **args)
 				if (strncmp(environ[i], "PATH=", 5) == 0)
 				{
 					path = environ[i] + 5;
-					path_found = 1;
+					/*path_found = 1;*/
 					break;
 				}
 			}
 
-			if (!path_found)
-				path = "/bin:/usr/bin";
+			if (!path_found || path[0] == '\0')
+			{
+				fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+				exit(127);
+			/*path = "/bin:/usr/bin";*/
+			}
 			executable_path = find_executable(args[0], path);
 
 			if (executable_path == NULL)
 			{
 				fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-				free(executable_path);
+				/*free(executable_path);*/
 				exit(127);
 			}
 
