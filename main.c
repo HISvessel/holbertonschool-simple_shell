@@ -48,6 +48,5 @@ int main(void)
 		lineptr = NULL;
 		n = 0; /*RESET BUFFER SIZE*/
 	}
-	/*free(lineptr);
-	return (0);*/
+	/* return (0);*/
 }
