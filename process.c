@@ -32,7 +32,7 @@ void execute_program(char *args[], char *path)
 		fprintf(stderr, "Invalid arguments: path or args is NULL\n");
 		exit(EXIT_FAILURE);
 	}
-	if (execve(path, args, environ) == -1)
+	if (execve(path, args, environ)) /*== -1)*/
 	{
 		perror("Error executing command");
 		exit(EXIT_FAILURE);
