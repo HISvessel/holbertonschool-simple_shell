@@ -19,10 +19,10 @@ int fork_and_execute(char **args)
 
 		if (strchr(args[0], '/') != NULL)
 		{
-			execute_program(args[0], args);
-			/*execve(args[0], args, environ);
+			/*execute_program(args[0], args);*/
+			execve(args[0], args, environ);
 			perror("execve failed");
-			exit(EXIT_FAILURE);*/
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
@@ -69,6 +69,6 @@ int fork_and_execute(char **args)
 		waitpid(pid, &status, 0);
 		return (WEXITSTATUS(status));
 	}
-	return (0);
+	/*return (0);*/
 }
 
