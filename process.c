@@ -24,15 +24,14 @@ pid_t create_process(void)
  * @args: Arguments in function
  */
 
-void execute_program(char *args[], char *path)
+void execute_program(char *path, char **args)
 {
-
 	if (path == NULL || args == NULL)
 	{
 		fprintf(stderr, "Invalid arguments: path or args is NULL\n");
 		exit(EXIT_FAILURE);
 	}
-	if (execve(path, args, environ)) /*== -1)*/
+	if (execve(path, args, environ) == -1)
 	{
 		perror("Error executing command");
 		exit(EXIT_FAILURE);

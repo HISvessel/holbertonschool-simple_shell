@@ -23,5 +23,5 @@ void handle_pipes(char *input);
 char *find_executable(const char *command, const char *path);
 int fork_and_execute(char **args);
 pid_t create_process(void);
-void execute_program(char *args[], char *path);
+void execute_program(char *path, char **args);
 #endif
