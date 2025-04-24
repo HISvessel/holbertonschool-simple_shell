@@ -1,0 +1,72 @@
+.TH hsh 1.0 "april 21st, 2025" "A miniature shell"
+.SH NAME
+.BR hsh - "a user made simple shell"
+.SH DESCRIPTION
+.SS
+.BR hsh " is a miniature command line interpreter contained inside of bash, in which the terminal user can perform a series of commands by input on the prompt."
+.SS
+.BR Overview
+This miniature terminal, when opened, allows the user to input commands in real time and have their output displayed on the screen. These commands are based upon the functionality of the bash, which means that whichever command can be input into your terminal, this hsh will run it and output its results. 
+
+.SS
+.BR Invocation
+When summoned, the miniature terminal begins a process that runs on a continuous loop as long as a false
+exit condition is not set in motion by termination of the process, such as an exit command. This process is forked into two subprocesses that work in conjunction to keep the operation of the kernel active and by operating user-typed inputs; so long as the loop of our prompt remains true. This also means that, even while arguments are invalid or cannot be found, the processes remain active and reset, so as to stand by for further instructions.
+
+To tart the shell, run:
+.PP
+.EX
+ ./hsh
+.EE
+.PP
+This launches the custom prompt where you can begin to prompt out commands for the shell to interpret.
+
+.SS
+.B Executing a command
+As mentioned earlier, the command prompt begins to take commands from user and reads them as arguments for the kernel to process. The shell takes a command, tokenizes it and interprets its result as an executable command. True commands are passed to output, while nonexistent commands are displayed with an error message. Among some of the commands tha can be traced by the shell, the kernel searches PATH for the command to be retrieved. Whatever PATH does not contain, a shell builtin is used in its place.
+
+.SS
+.B Builtins
+As part of what makes this a miniature shell, it means that the program is equipped with builtin functions that add functionality and interactive behaviour between the hsh and the user. Some of the commands that have been compiled are as follow:
+
+.TP
+.BR 
+.BR echo -
+prints a line unto standard output
+
+.BR ls -
+listing documents
+
+.BR touch - 
+creates a new file
+
+.BR mkdir -
+creates a new directory
+
+.BR cd
+changes directory
+
+.BR cat
+concatenates a file
+
+.BR rm -
+removes file(s)
+
+.BR rmdir -
+removes directories
+
+.SH OPTIONS
+This version of
+.B hsh
+does not currently support command-line optons on invocation. All configuration occurs interactively once the program is launched.
+
+.SH AUTHORS
+The 
+.B hsh
+shell was developed by the following contributors
+
+.PP
+Ramos, Josniel <josnielramos@gmail.com>
+
+.PP
+Sanchez, Kevin <kevinsanchezdabest@yahoo.com>
