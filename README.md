@@ -160,6 +160,6 @@ echo "ls -l" | ./hsh
 ```
 
 ## Authors
-Josniel Ramos - [josniel.ramos@gmail.com]
+Josniel Ramos - [josnielramos@gmail.com]
 
 Kevin Sanchez - [kevinsanchezdabest@yahoo.com]
